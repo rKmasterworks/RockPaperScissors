@@ -1,4 +1,3 @@
-getComputerChoice
 //func computerchoice
 function computerChoice(){
     let compChoice = Math.floor(Math.random() * 3) + 1;
@@ -20,7 +19,7 @@ function playRound(userChoice, compChoice) {
       if(compChoice === "Rock"){
         return "It`s a tie!";
       }else if(compChoice === "Paper"){
-        return "You Lose!";
+        return "Ha! You're a loser!";
       }else{
         return "Winner Winner Chicken Dinner!";
       }
@@ -30,7 +29,7 @@ function playRound(userChoice, compChoice) {
       if(compChoice === "Paper"){
         return "It`s a tie!";
       }else if(compChoice === "Scissors"){
-        return "You Lose!";
+        return "Ha! You're a loser!";
       }else{
         return "Winner Winner Chicken Dinner!";
       }
@@ -41,7 +40,7 @@ function playRound(userChoice, compChoice) {
       if(compChoice === "scissors"){
         return "It`s a tie!";
       }else if(compChoice === "paper"){
-        return "You Lose!";
+        return "Ha! You're a loser!";
       }else{
         return "Winner Winner Chicken Dinner!";
       }
@@ -51,4 +50,44 @@ function playRound(userChoice, compChoice) {
       return "It's rock, paper or scissors, not tic tac toe!"
     }
   }
+  function playGame(){
+    // User Wins
+    let countUserWins = 0;
+    // Computer Wins
+    let countCompWins = 0;
+    for(let i = 1, j = 0; i <= 5; i++){
   
+      // Waiting for user choice
+      let userChoice = prompt("Rock, Paper or Scissors?")();
+  
+      // Computer choice and return value
+      let compChoice = computerChoice();
+  
+      // Round result
+      let result = playRound(userChoice, compChoice);
+  
+      // Counting wins
+      if(result === "Winner Winner chicken dinner!"){
+        countUserWins++;
+        console.log("User - " + userChoice + " Computer - " + compChoice);
+        j++;
+      }else if(result === "Ha! You're a loser"){
+        countCompWins++;
+        console.log("User - " + userChoice + " Computer - " + compChoice);
+        j++
+      }else if(result === "Draw!"){
+        countUserWins++;
+        countCompWins++;
+        console.log("User - " + userChoice + " Computer - " + compChoice);
+        i = j;
+      }else {
+        i = j;
+      }
+  
+      // Display user and computer wins
+      console.log("User - " + countUserWins + " Computer - " + countCompWins + "; " + result);
+      console.log(" ")
+    }
+  }
+  
+  playGame();
